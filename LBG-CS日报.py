@@ -58,7 +58,8 @@ def get_cols(df):
     
     return df
 
-df0=pd.read_csv('/data/每日数据.csv',encoding='gbk')
+url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/每日数据.csv'
+df0=pd.read_csv(url,encoding='gbk')
 
 #主体
 #st.markdown('Streamlit Demo')
