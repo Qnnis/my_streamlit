@@ -104,26 +104,3 @@ st.write('#### 1.2 服务数据',df_shop_service)
 # 2.3 退款数据
 df_shop_rrc = df_shop_rrc.loc[(df_shop_rrc.index.isin(shops))&(df_shop_rrc.月.isin(months))]
 st.write('#### 1.3 退款数据',df_shop_rrc)
-
-
-try:     
-        chart = (
-            alt.Chart(df_shop)
-            .mark_area(opacity=0.3)
-            .encode(
-                x="year:T",
-                y=alt.Y("Gross Agricultural Product ($B):Q", stack=None),
-                color="Region:N",
-            )
-        )
-        st.altair_chart(chart, use_container_width=True)
-        
-except:
-#URLError as e:
-    st.error(
-        """
-        **This demo requires internet access.**
-        Connection error: %s
-    """
-        #% e.reason
-    )
