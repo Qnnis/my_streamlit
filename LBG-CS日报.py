@@ -59,7 +59,7 @@ def get_cols(df):
     return df
 
 url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/每日数据.csv'
-df0=pd.read_csv(url)
+df0=pd.read_csv(url,encoding='UTF-8')
 
 #主体
 #st.markdown('Streamlit Demo')
