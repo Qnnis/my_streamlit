@@ -58,7 +58,7 @@ def get_cols(df):
     
     return df
 
-df0=pd.read_csv('/data/每日数据.csv',encoding='ANSI')
+df0=pd.read_csv('/data/每日数据.csv',encoding='gbk')
 
 #主体
 #st.markdown('Streamlit Demo')
