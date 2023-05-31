@@ -21,6 +21,8 @@ df0.columns=['组','店铺','日期','访客数','接待人数','首响','店铺
 ,'退款自主完结率','纠纷退款率','介入率','投诉率','派送包裹数','签收成功包裹数','总支付_签收时长(秒)','咨询人次'
 ,'买家消息数','买家发起','客服字数','最大同时接待数','接待时长','月']
 
+df0['日期']=pd.to_Datetime(df0['日期'])
+
 #unicode_escape
 
 #@st.cache_data
@@ -94,7 +96,6 @@ del df_all['店铺']
 st.dataframe(df_all)
 #df_all
 
-df0['日期']=pd.to_datetime(df0['日期'])
 df_by_day=df0.groupby(['年','日期']).sum().reset_index('年',drop=True)
 chart_data = df_by_day.loc[:,'客服销售额']
 st.line_chart(chart_data)
