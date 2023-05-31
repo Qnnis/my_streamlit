@@ -11,6 +11,8 @@ url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/date_daily
 df0=pd.read_csv(url,encoding="gb18030",on_bad_lines="skip",header=0,sep=',',parse_dates=['date'],chunksize=10000)
 #unicode_escape
 
+st.write(df0)
+
 #@st.cache_data
 def get_UN_data():
     AWS_BUCKET_URL = "https://streamlit-demo-data.s3-us-west-2.amazonaws.com"
