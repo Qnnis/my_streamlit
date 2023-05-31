@@ -23,8 +23,6 @@ df0.columns=['组','店铺','日期','访客数','接待人数','首响','店铺
 
 #unicode_escape
 
-st.write(df0)
-
 #@st.cache_data
 def get_UN_data():
     AWS_BUCKET_URL = "https://streamlit-demo-data.s3-us-west-2.amazonaws.com"
@@ -87,10 +85,12 @@ st.caption('日期:'+today.strftime("%Y-%m-%d"))
 st.header('一、整体数据')
 st.caption('明细如下')
 
-df_all=df0.groupby(['年','month']).sum().reset_index().query("(年=='TY')").rename({'month':'月'},axis=1)
+df_all=df0.groupby(['年','month']).sum().reset_index().query("(年=='TY')").rename({'month':'月'},axis=1).set_index('月')
 del df_all['年']
 df_all.loc['YTD']=df_all.sum()
-df_all=get_cols(df_all).set_index('月')
+df_all=get_cols(df_all)
+del df_all['组']
+del df_all['店铺']
 st.dataframe(df_all)
 #df_all
 
