@@ -21,8 +21,6 @@ df0.columns=['组','店铺','日期','访客数','接待人数','首响','店铺
 ,'退款自主完结率','纠纷退款率','介入率','投诉率','派送包裹数','签收成功包裹数','总支付_签收时长(秒)','咨询人次'
 ,'买家消息数','买家发起','客服字数','最大同时接待数','接待时长','月']
 
-df0['日期']=pd.to_datetime(df0['日期'])
-
 #unicode_escape
 
 #@st.cache_data
@@ -87,7 +85,7 @@ st.caption('日期:'+today.strftime("%Y-%m-%d"))
 st.header('一、整体数据')
 st.caption('明细如下')
 
-df_all=df0.drop(columns=['日期','月日']).groupby(['年','月']).sum().reset_index().query("(年=='TY')"),axis=1).set_index('月')
+df_all=df0.groupby(['年','月']).sum().reset_index().query("(年=='TY')").set_index('月')
 del df_all['年']
 df_all.loc['YTD']=df_all.sum()
 df_all=get_cols(df_all)
@@ -96,12 +94,13 @@ del df_all['店铺']
 st.dataframe(df_all)
 #df_all
 
+df0['日期']=pd.to_datetime(df0['日期'])
 df_by_day=df0.groupby(['年','日期']).sum().reset_index('年',drop=True)
 chart_data = df_by_day.loc[:,'客服销售额']
 st.line_chart(chart_data)
 
 # 二、店铺数据
-df_shop=df0.groupby(['店铺','年','month']).sum().reset_index().query("(年=='TY')").rename({'month':'月'},axis=1)
+df_shop=df0.groupby(['店铺','年','月']).sum().reset_index().query("(年=='TY')")
 df_shop=get_cols(df_shop).set_index('店铺')
 
 df_shop_sales=df_shop[['月','客服销售额','客服销售占比','询单人数','转化率','客服客单价','客服客件数','客服AOV']].sort_values('客服销售额',ascending=False)
