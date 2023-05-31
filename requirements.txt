@@ -2,5 +2,3 @@ pandas
 numpy
 streamlit==1.22.0
 datetime
-sys
-io
