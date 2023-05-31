@@ -22,7 +22,6 @@ df0.columns=['组','店铺','日期','访客数','接待人数','首响','店铺
 ,'买家消息数','买家发起','客服字数','最大同时接待数','接待时长','月']
 
 df0['日期']=pd.to_datetime(df0['日期'])
-df0['月日']=pd.to_datetime(df0['月日'])
 
 #unicode_escape
 
@@ -88,7 +87,7 @@ st.caption('日期:'+today.strftime("%Y-%m-%d"))
 st.header('一、整体数据')
 st.caption('明细如下')
 
-df_all=df0.drop(['日期','月日'],axis=1).groupby(['年','月']).sum().reset_index().query("(年=='TY')"),axis=1).set_index('月')
+df_all=df0.drop(columns=['日期','月日']).groupby(['年','月']).sum().reset_index().query("(年=='TY')"),axis=1).set_index('月')
 del df_all['年']
 df_all.loc['YTD']=df_all.sum()
 df_all=get_cols(df_all)
