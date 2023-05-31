@@ -5,7 +5,7 @@ import pandas as pd
 
 today=datetime.datetime.now()+datetime.timedelta(days=-1)
 url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/每日数据.csv'
-df0=pd.read_csv(url,encoding='gb18030')
+df0=pd.read_csv(url,encoding='gb18030',thousands=',',header=0,sep=',',parse_dates=['日期'])
 
 #@st.cache_data
 def get_UN_data():
