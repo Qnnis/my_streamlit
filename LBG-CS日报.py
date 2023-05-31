@@ -7,29 +7,26 @@ import pandas as pd
 #sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding="utf8",line_buffering=True)
 
 today=datetime.datetime.now()+datetime.timedelta(days=-1)
-url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/date_daily.csv'
-df0=pd.read_csv(url,encoding="gb18030",header=0,sep=',',parse_dates=['date'])
 
-df0.columns=['组','店铺','日期','访客数','接待人数','首响','店铺销售额','客服销售额','客服销售占比','询单人数','最终付款人数'
-,'转化率','满意度','满意比','收到评价数','评价很满意','评价满意','平响','客服消息数','callin转化率','年','月日'
-,'总响应时间','总首响时间','总满意量','店铺退款金额','仅退款金额','退款率','客服退款金额','评价一般','评价不满意','评价很不满意'
-,'咨询人数','客服销售人数','店铺销售人数','店铺销售量','客服销售量','付款日仅退款金额','付款日退货退款金额','付款日退款金额'
-,'申请日支付到退款用时_C','申请日支付到退款用时_RR','申请日支付到退款用时','申请退款单量_C','申请退款单量_RR','申请退款单量','自主申请退款单量'
-,'举证中','客服处理完成','客服已经介入','待买家发货','待商家收货','拒绝退款','退款待处理','退款成功'
-,'自主完结单量_C','非自主完结单量_C','完结单量_C','自主完结单量_RR','非自主完结单量_RR','完结单量_RR','总完结单量'
-,'自主完结用时_C','非自主完结用时_C','自主完结用时_RR','非自主完结用时_RR','纠纷退款笔数','投诉成立笔数','品质退款数','品质退款商品个数'
-,'退款自主完结率','纠纷退款率','介入率','投诉率','派送包裹数','签收成功包裹数','总支付_签收时长(秒)','咨询人次'
-,'买家消息数','买家发起','客服字数','最大同时接待数','接待时长','月']
+@st.cache_data
+def get_original_data():
+    url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/date_daily.csv'
+    df=pd.read_csv(url,encoding="gb18030",header=0,sep=',',parse_dates=['date'])
 
-#df0['日期']=pd.to_datetime(df0['日期'])
-
-#unicode_escape
-
-#@st.cache_data
-def get_UN_data():
-    AWS_BUCKET_URL = "https://streamlit-demo-data.s3-us-west-2.amazonaws.com"
-    df = pd.read_csv(AWS_BUCKET_URL + "/agri.csv.gz")
-    return df.set_index("Region")
+    df.columns=['组','店铺','日期','访客数','接待人数','首响','店铺销售额','客服销售额','客服销售占比','询单人数','最终付款人数'
+    ,'转化率','满意度','满意比','收到评价数','评价很满意','评价满意','平响','客服消息数','callin转化率','年','月日'
+    ,'总响应时间','总首响时间','总满意量','店铺退款金额','仅退款金额','退款率','客服退款金额','评价一般','评价不满意','评价很不满意'
+    ,'咨询人数','客服销售人数','店铺销售人数','店铺销售量','客服销售量','付款日仅退款金额','付款日退货退款金额','付款日退款金额'
+    ,'申请日支付到退款用时_C','申请日支付到退款用时_RR','申请日支付到退款用时','申请退款单量_C','申请退款单量_RR','申请退款单量','自主申请退款单量'
+    ,'举证中','客服处理完成','客服已经介入','待买家发货','待商家收货','拒绝退款','退款待处理','退款成功'
+    ,'自主完结单量_C','非自主完结单量_C','完结单量_C','自主完结单量_RR','非自主完结单量_RR','完结单量_RR','总完结单量'
+    ,'自主完结用时_C','非自主完结用时_C','自主完结用时_RR','非自主完结用时_RR','纠纷退款笔数','投诉成立笔数','品质退款数','品质退款商品个数'
+    ,'退款自主完结率','纠纷退款率','介入率','投诉率','派送包裹数','签收成功包裹数','总支付_签收时长(秒)','咨询人次'
+    ,'买家消息数','买家发起','客服字数','最大同时接待数','接待时长','月']
+    
+    df['日期']=pd.to_datetime(df['日期'])
+    
+    return df
 
 def get_date(df):
     df['年']=df['日期'].map(lambda x:x.year)
@@ -79,7 +76,9 @@ def get_cols(df):
     return df
 
 #主体
-#st.markdown('Streamlit Demo')
+st.markdown('❤聪明小兔❤')
+df0=get_original_data()
+
 st.title('LBG-CS日报')
 st.caption('日期:'+today.strftime("%Y-%m-%d"))
 
