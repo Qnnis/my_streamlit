@@ -23,7 +23,7 @@ df0.cloumns=['组','店铺','日期','访客数','接待人数','首响','店铺
 
 #unicode_escape
 
-st.write(df0)
+st.write(df0.cloumns)
 
 #@st.cache_data
 def get_UN_data():
