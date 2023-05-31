@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 
 today=datetime.datetime.now()+datetime.timedelta(days=-1)
+url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/每日数据.csv'
+df0=pd.read_csv(url,encoding='ANSI')
 
 #@st.cache_data
 def get_UN_data():
@@ -57,9 +59,6 @@ def get_cols(df):
     df['访客数']/=10000.0
     
     return df
-
-url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/每日数据.csv'
-df0=pd.read_csv(url)
 
 #主体
 #st.markdown('Streamlit Demo')
