@@ -8,7 +8,7 @@ import pandas as pd
 
 today=datetime.datetime.now()+datetime.timedelta(days=-1)
 url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/date_daily.csv'
-df0=pd.read_csv(url,encoding="gb18030",header=0,sep=',',parse_dates=['日期'])
+df0=pd.read_csv(url,encoding="gb18030",header=0,sep=',',parse_dates=['date'])
 
 df0.columns=['组','店铺','日期','访客数','接待人数','首响','店铺销售额','客服销售额','客服销售占比','询单人数','最终付款人数'
 ,'转化率','满意度','满意比','收到评价数','评价很满意','评价满意','平响','客服消息数','callin转化率','年','月日'
