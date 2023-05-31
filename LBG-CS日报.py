@@ -3,11 +3,12 @@ import datetime,sys,io
 import numpy as np
 import pandas as pd
 
-sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding="utf8",line_buffering=True)
+sys.setdefaultencoding('utf8')  
+#sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding="utf8",line_buffering=True)
 
 today=datetime.datetime.now()+datetime.timedelta(days=-1)
 url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/每日数据.csv'
-df0=pd.read_csv(url,encoding='utf-16',thousands=',',header=0,sep=',',parse_dates=['日期'],chunksize=10000)
+df0=pd.read_csv(url,encoding='utf-16',header=0,sep=',',parse_dates=['日期'],chunksize=10000)
 #gb18030 unicode_escape
 
 #@st.cache_data
