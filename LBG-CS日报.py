@@ -2,6 +2,9 @@ import streamlit as st
 import datetime
 import numpy as np
 import pandas as pd
+import sys
+reload(sys)                                 
+sys.setdefaultencoding( "utf-8" ) 
 
 today=datetime.datetime.now()+datetime.timedelta(days=-1)
 url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/每日数据.csv'
