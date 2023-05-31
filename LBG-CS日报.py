@@ -8,7 +8,7 @@ import pandas as pd
 
 today=datetime.datetime.now()+datetime.timedelta(days=-1)
 url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/date_daily.csv'
-df0=pd.read_csv(url,encoding="gb18030",header=0,sep=',',chunksize=1000)
+df0=pd.read_csv(url)
 #unicode_escape
 
 st.write(df0)
