@@ -3,7 +3,7 @@ import datetime,sys,io
 import numpy as np
 import pandas as pd
 
-sys.setdefaultencoding('utf8')  
+#sys.setdefaultencoding('utf8')  
 #sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding="utf8",line_buffering=True)
 
 today=datetime.datetime.now()+datetime.timedelta(days=-1)
