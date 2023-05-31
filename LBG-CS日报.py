@@ -88,7 +88,7 @@ st.caption('日期:'+today.strftime("%Y-%m-%d"))
 st.header('一、整体数据')
 st.caption('明细如下')
 
-df_all=df0.drop([['日期','月日']]).groupby(['年','month']).sum().reset_index().query("(年=='TY')"),axis=1).set_index('月')
+df_all=df0.drop([['日期','月日']]).groupby(['年','月']).sum().reset_index().query("(年=='TY')"),axis=1).set_index('月')
 del df_all['年']
 df_all.loc['YTD']=df_all.sum()
 df_all=get_cols(df_all)
