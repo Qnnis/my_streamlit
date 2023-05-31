@@ -7,7 +7,7 @@ import pandas as pd
 #sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding="utf8",line_buffering=True)
 
 today=datetime.datetime.now()+datetime.timedelta(days=-1)
-url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/每日数据.csv'
+url='https://raw.githubusercontent.com/Qnnis/my_streamlit/master/data/date_daily.csv'
 df0=pd.read_csv(url,encoding="gb18030",on_bad_lines="skip",header=0,sep=',',parse_dates=['date'],chunksize=10000)
 #unicode_escape
 
