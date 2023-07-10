@@ -76,7 +76,7 @@ def get_cols(df):
     return df
 
 #主体
-st.markdown('❤聪明小兔❤')
+#st.markdown('by cwx')
 df0=get_original_data()
 
 st.title('LBG-CS日报')
